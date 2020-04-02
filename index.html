@@ -1,0 +1,414 @@
+
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Coronavirus live</title>
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<style>
+					body{
+						background-image: url("images/1.jpg") ;
+						height: auto;
+						margin: 0;
+						background-size: cover;
+					}
+					
+		</style>
+	</head>
+	<body>
+
+		<div class="container">
+
+			<div class="container-fluid">
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-lg-12 col-lg-offset-2">
+						<br>
+							<h1 >Covid-19 Live Update</h1><br>
+							  <br>
+							  
+							    <button type="button"id="a"class="btn btn-danger">America</button>
+							    <button type="button"id="b"class="btn btn-success">Bangladesh</button>
+							    <button type="button" id="f"class="btn btn-warning">France</button>
+							    <button type="button"id="g"class="btn btn-warning">Germany</button>
+							    <button type="button"id="ita"class="btn btn-danger">Italy</button>
+							    <button type="button" id="ira"class="btn btn-warning">Iran</button>
+							    <button type="button"id="ind"class="btn btn-primary">India</button>
+							    <button type="button"id="s"class="btn btn-danger">Spain</button>
+							    <button type="button"id="uk"class="btn btn-danger">UK</button>
+							    
+							  
+						
+							<br>
+							<br>
+					</div>  
+				</div>		  
+			</div>  
+		</div>
+
+
+
+		<div class="container">
+
+					<div class="container-fluid">
+
+						<div class="row">
+							<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-lg-12 col-lg-offset-2">
+								<div class="table-responsive">
+									
+								
+										<table class="table table-bordered table-dark table-striped text-center">
+										    <thead>
+										      <tr>
+										        <th>Country</th>
+										        <th>Total Cases</th>
+										        <th>Total Deaths</th>
+										        <th>Total Recovered</th>
+										        <th>Death Ratio (%)</th>
+										        <th>Recovered Ratio (%)</th>
+										        <th>Total New Cases Today</th>
+										        <th>Total New Deaths Today</th>
+										        
+										      </tr>
+										    </thead>
+										    <tbody>
+										      <tr>
+										          <td class="country_name"></td>
+										        <td class="total_cases"></td>
+										        <td class="total_deaths"></td>
+										        <td class="total_recovered"></td>
+										        <td class="death_ratio"></td>
+										        <td class="recovered_ratio"></td>
+										        <td class="total_new_cases_today"></td>
+										        <td class="total_new_deaths_today"></td>
+										        
+										      </tr>
+										    </tbody>
+		  								</table>
+  								</div>
+								
+							</div>  
+						</div>		  
+					</div>  
+		</div>
+
+
+
+
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="js/jquery-3.4.1.min.js"></script>
+		<script>
+			$.ajax({
+  					url: 'https://api.thevirustracker.com/free-api?countryTotals=ALL',
+  					dataType: 'json',
+  					success: function(data) {
+  						var ban = data.countryitems[0][11].title;
+					var ame = data.countryitems[0][164].title;
+					var ita = data.countryitems[0][78].title;
+					var spa = data.countryitems[0][144].title;
+					var fra = data.countryitems[0][54].title;
+					var ger = data.countryitems[0][60].title;
+
+					var ban1 = data.countryitems[0][11];
+					var ame1 = data.countryitems[0][164];
+					var ita1 = data.countryitems[0][78];
+					var spa1 = data.countryitems[0][144];
+					var fra1 = data.countryitems[0][54];
+					var ger1 = data.countryitems[0][60];
+
+					var banDeathRatio = data.countryitems[0][11].total_deaths*100/data.countryitems[0][11].total_cases;
+
+					var ameDeathRatio = data.countryitems[0][164].total_deaths*100/data.countryitems[0][164].total_cases;
+
+					var fraDeathRatio = data.countryitems[0][54].total_deaths*100/data.countryitems[0][54].total_cases;
+
+					var gerDeathRatio = data.countryitems[0][60].total_deaths*100/data.countryitems[0][60].total_cases;
+
+					var itaDeathRatio = data.countryitems[0][77].total_deaths*100/data.countryitems[0][77].total_cases;
+
+					var iraDeathRatio = data.countryitems[0][178].total_deaths*100/data.countryitems[0][178].total_cases;
+
+					var indDeathRatio = data.countryitems[0][72].total_deaths*100/data.countryitems[0][72].total_cases;
+
+					var spaDeathRatio = data.countryitems[0][142].total_deaths*100/data.countryitems[0][142].total_cases;
+
+					var ukDeathRatio = data.countryitems[0][163].total_deaths*100/data.countryitems[0][163].total_cases;
+
+
+
+					var banRecoveredRatio = data.countryitems[0][11].total_recovered*100/data.countryitems[0][11].total_cases;
+
+					var ameRecoveredRatio = data.countryitems[0][164].total_recovered*100/data.countryitems[0][164].total_cases;
+
+					var fraRecoveredRatio = data.countryitems[0][54].total_recovered*100/data.countryitems[0][54].total_cases;
+
+					var gerRecoveredRatio = data.countryitems[0][60].total_recovered*100/data.countryitems[0][60].total_cases;
+
+					var itaRecoveredRatio = data.countryitems[0][77].total_recovered*100/data.countryitems[0][77].total_cases;
+
+					var iraRecoveredRatio = data.countryitems[0][178].total_recovered*100/data.countryitems[0][178].total_cases;
+
+					var indRecoveredRatio = data.countryitems[0][72].total_recovered*100/data.countryitems[0][72].total_cases;
+
+					var spaRecoveredRatio = data.countryitems[0][142].total_recovered*100/data.countryitems[0][142].total_cases;
+
+					var ukRecoveredRatio = data.countryitems[0][163].total_recovered*100/data.countryitems[0][163].total_cases;
+					//console.log(ger1);
+				  	//console.log(ger);
+				  	
+				  		$("#b").mouseover(function(){
+				   				$(".country_name").text(ban1.title);
+								$(".total_cases").text(ban1.total_cases);
+								$(".total_deaths").text(ban1.total_deaths);
+								$(".total_recovered").text(ban1.total_recovered);
+								$(".total_new_cases_today").text(data.countryitems[0][11].total_new_cases_today);
+								$(".total_new_deaths_today").text(data.countryitems[0][11].total_new_deaths_today)
+								$(".death_ratio").text(banDeathRatio.toFixed(3) + " %")
+								$(".recovered_ratio").text(banRecoveredRatio.toFixed(3) + " %")
+
+								//alert(cvalue)
+							})
+
+				  	
+				  	
+				  	$("#b").mouseout(function(){
+				  				$(".country_name").text(null);
+								$(".total_cases").text(null);
+								$(".total_deaths").text(null);
+								$(".total_recovered").text(null);
+								$(".total_new_cases_today").text(null);
+								$(".total_new_deaths_today").text(null);
+								$(".death_ratio").text(null);
+								$(".recovered_ratio").text(null);
+				   		})
+
+				  	$("#a").mouseover(function(){
+				   		
+				  				$(".country_name").text(ame1.title);
+								$(".total_cases").text(ame1.total_cases);
+								$(".total_deaths").text(ame1.total_deaths);
+								$(".total_recovered").text(ame1.total_recovered);
+								$(".total_new_cases_today").text(data.countryitems[0][164].total_new_cases_today);
+								$(".total_new_deaths_today").text(data.countryitems[0][164].total_new_deaths_today)
+								$(".death_ratio").text(ameDeathRatio.toFixed(3) + " %")
+								$(".recovered_ratio").text(ameRecoveredRatio.toFixed(3) + " %")
+								//alert(cvalue)*/
+							})
+				  	$("#a").mouseout(function(){
+				  				$(".country_name").text(null);
+								$(".total_cases").text(null);
+								$(".total_deaths").text(null);
+								$(".total_recovered").text(null);
+								$(".total_new_cases_today").text(null);
+								$(".total_new_deaths_today").text(null);
+								$(".death_ratio").text(null);
+								$(".recovered_ratio").text(null);
+				   		})
+
+				  	$("#f").mouseover(function(){
+				   		
+				  				$(".country_name").text(data.countryitems[0][54].title);
+								$(".total_cases").text(data.countryitems[0][54].total_cases);
+								$(".total_deaths").text(data.countryitems[0][54].total_deaths);
+								$(".total_recovered").text(data.countryitems[0][54].total_recovered);
+								$(".total_new_cases_today").text(data.countryitems[0][54].total_new_cases_today);
+								$(".total_new_deaths_today").text(data.countryitems[0][54].total_new_deaths_today)
+								$(".death_ratio").text(fraDeathRatio.toFixed(3) + " %")
+								$(".recovered_ratio").text(fraRecoveredRatio.toFixed(3) + " %")
+								//alert(cvalue)*/
+							})
+				  	$("#f").mouseout(function(){
+				  				$(".country_name").text(null);
+								$(".total_cases").text(null);
+								$(".total_deaths").text(null);
+								$(".total_recovered").text(null);
+								$(".total_new_cases_today").text(null);
+								$(".total_new_deaths_today").text(null);
+								$(".death_ratio").text(null);
+								$(".recovered_ratio").text(null);
+				   		})
+
+				  	$("#g").mouseover(function(){
+				   		
+				  				$(".country_name").text(data.countryitems[0][60].title);
+								$(".total_cases").text(data.countryitems[0][60].total_cases);
+								$(".total_deaths").text(data.countryitems[0][60].total_deaths);
+								$(".total_recovered").text(data.countryitems[0][60].total_recovered);
+								$(".total_new_cases_today").text(data.countryitems[0][60].total_new_cases_today);
+								$(".total_new_deaths_today").text(data.countryitems[0][60].total_new_deaths_today);
+								$(".death_ratio").text(gerDeathRatio.toFixed(3) + " %")
+								$(".recovered_ratio").text(gerRecoveredRatio.toFixed(3) + " %")
+
+
+								//alert(cvalue)*/
+							})
+				  	$("#g").mouseout(function(){
+				  				$(".country_name").text(null);
+								$(".total_cases").text(null);
+								$(".total_deaths").text(null);
+								$(".total_recovered").text(null);
+								$(".total_new_cases_today").text(null);
+								$(".total_new_deaths_today").text(null);
+								$(".death_ratio").text(null);
+								$(".recovered_ratio").text(null);
+				   		})
+
+				  	$("#ita").mouseover(function(){
+				   		
+				  				$(".country_name").text(data.countryitems[0][77].title);
+								$(".total_cases").text(data.countryitems[0][77].total_cases);
+								$(".total_deaths").text(data.countryitems[0][77].total_deaths);
+								$(".total_recovered").text(data.countryitems[0][77].total_recovered);
+								$(".total_new_cases_today").text(data.countryitems[0][77].total_new_cases_today);
+								$(".total_new_deaths_today").text(data.countryitems[0][77].total_new_deaths_today);
+								$(".death_ratio").text(itaDeathRatio.toFixed(3) + " %")
+								$(".recovered_ratio").text(itaRecoveredRatio.toFixed(3) + " %")
+
+								//alert(cvalue)*/
+							})
+				  	$("#ita").mouseout(function(){
+				  				$(".country_name").text(null);
+								$(".total_cases").text(null);
+								$(".total_deaths").text(null);
+								$(".total_recovered").text(null);
+								$(".total_new_cases_today").text(null);
+								$(".total_new_deaths_today").text(null);
+								$(".death_ratio").text(null);
+								$(".recovered_ratio").text(null);
+				   		})
+
+				  	$("#ira").mouseover(function(){
+				   		
+				  				$(".country_name").text(data.countryitems[0][178].title);
+								$(".total_cases").text(data.countryitems[0][178].total_cases);
+								$(".total_deaths").text(data.countryitems[0][178].total_deaths);
+								$(".total_recovered").text(data.countryitems[0][178].total_recovered);
+								$(".total_new_cases_today").text(data.countryitems[0][178].total_new_cases_today);
+								$(".total_new_deaths_today").text(data.countryitems[0][178].total_new_deaths_today);
+								$(".death_ratio").text(iraDeathRatio.toFixed(3) + " %")
+								$(".recovered_ratio").text(iraRecoveredRatio.toFixed(3) + " %")
+
+								//alert(cvalue)*/
+							})
+				  	$("#ira").mouseout(function(){
+				  				$(".country_name").text(null);
+								$(".total_cases").text(null);
+								$(".total_deaths").text(null);
+								$(".total_recovered").text(null);
+								$(".total_new_cases_today").text(null);
+								$(".total_new_deaths_today").text(null);
+								$(".death_ratio").text(null);
+								$(".recovered_ratio").text(null);
+				   		})
+
+				  	$("#ind").mouseover(function(){
+				   		
+				  				$(".country_name").text(data.countryitems[0][72].title);
+								$(".total_cases").text(data.countryitems[0][72].total_cases);
+								$(".total_deaths").text(data.countryitems[0][72].total_deaths);
+								$(".total_recovered").text(data.countryitems[0][72].total_recovered);
+								$(".total_new_cases_today").text(data.countryitems[0][72].total_new_cases_today);
+								$(".total_new_deaths_today").text(data.countryitems[0][72].total_new_deaths_today);
+								$(".death_ratio").text(indDeathRatio.toFixed(3) + " %")
+								$(".recovered_ratio").text(indRecoveredRatio.toFixed(3) + " %")
+
+								//alert(cvalue)*/
+							})
+				  	$("#ind").mouseout(function(){
+				  				$(".country_name").text(null);
+								$(".total_cases").text(null);
+								$(".total_deaths").text(null);
+								$(".total_recovered").text(null);
+								$(".total_new_cases_today").text(null);
+								$(".total_new_deaths_today").text(null);
+								$(".death_ratio").text(null);
+								$(".recovered_ratio").text(null);
+				   		})
+
+				  	$("#s").mouseover(function(){
+				   		
+				  				$(".country_name").text(data.countryitems[0][142].title);
+								$(".total_cases").text(data.countryitems[0][142].total_cases);
+								$(".total_deaths").text(data.countryitems[0][142].total_deaths);
+								$(".total_recovered").text(data.countryitems[0][142].total_recovered);
+								$(".total_new_cases_today").text(data.countryitems[0][142].total_new_cases_today);
+								$(".total_new_deaths_today").text(data.countryitems[0][142].total_new_deaths_today);
+								$(".death_ratio").text(spaDeathRatio.toFixed(3) + " %")
+								$(".recovered_ratio").text(spaRecoveredRatio.toFixed(3) + " %")
+
+								//alert(cvalue)*/
+							})
+				  	$("#s").mouseout(function(){
+				  				$(".country_name").text(null);
+								$(".total_cases").text(null);
+								$(".total_deaths").text(null);
+								$(".total_recovered").text(null);
+								$(".total_new_cases_today").text(null);
+								$(".total_new_deaths_today").text(null);
+								$(".death_ratio").text(null);
+								$(".recovered_ratio").text(null);
+				   		})
+
+				  	$("#uk").mouseover(function(){
+				   		
+				  				$(".country_name").text(data.countryitems[0][163].title);
+								$(".total_cases").text(data.countryitems[0][163].total_cases);
+								$(".total_deaths").text(data.countryitems[0][163].total_deaths);
+								$(".total_recovered").text(data.countryitems[0][163].total_recovered);
+								$(".total_new_cases_today").text(data.countryitems[0][163].total_new_cases_today);
+								$(".total_new_deaths_today").text(data.countryitems[0][163].total_new_deaths_today);
+								$(".death_ratio").text(ukDeathRatio.toFixed(3) + " %")
+								$(".recovered_ratio").text(ukRecoveredRatio.toFixed(3) + " %")
+
+								//alert(cvalue)*/
+							})
+				  	$("#uk").mouseout(function(){
+				  				$(".country_name").text(null);
+								$(".total_cases").text(null);
+								$(".total_deaths").text(null);
+								$(".total_recovered").text(null);
+								$(".total_new_cases_today").text(null);
+								$(".total_new_deaths_today").text(null);
+								$(".death_ratio").text(null);
+								$(".recovered_ratio").text(null);
+				   		})
+
+
+				  	
+				  		
+
+
+				  	
+				  	
+
+					console.log(data);
+				    //console.log(data.countryitems[0]);
+
+
+
+
+
+
+    						console.log(data);
+  						}
+				});
+		</script>
+
+
+
+
+
+
+
+
+
+
+
+		
+		<script src="js/bootstrap.min.js"></script></body>
+</html>
